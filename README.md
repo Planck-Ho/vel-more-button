@@ -6,7 +6,9 @@ A more user-friendly button group and dropdown menu developed based on Element P
 
 ## Install
 
-```base
+```bash
+npm install vel-more-button
+# Or use pnpm
 pnpm install vel-more-button
 ```
 
@@ -58,13 +60,18 @@ import { VelMoreButtonGroup, VelMoreButtonItem } from 'vel-more-button'
 | - | - | - |
 | default | Custom default content | VelMoreButtonItem
 
-## VelMoreButtonItem Properties
+## VelMoreButtonItem Attributes
 
 | Property | Description | Type | Default |
 | - | - | - | - |
 | content | Button content | <code>string</code> | -
 | disabled | Whether it is disabled | <code>boolean</code> | false
 | - | Supports other button configuration properties, see the <a href="https://element-plus.org/en-US/component/button.html#button-attributes" target="_blank">el-button</a> documentation for more details. | - | -
+
+## VelMoreButtonItem Events
+| Name | Description | Type
+| - | - | -
+| click | Click on the event. If the bound callback function returns Promise, the loading effect will be automatically added | <code>(e: Event) => void \| Promise<void></code>
 
 ## VelMoreButtonItem Slots
 | Slot Name | Description | Child Tag |

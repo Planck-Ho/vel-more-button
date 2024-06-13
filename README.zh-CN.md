@@ -6,7 +6,9 @@
 
 ## 安装
 
-```base
+```bash
+npm install vel-more-button
+# 或者使用pnpm
 pnpm install vel-more-button
 ```
 
@@ -66,7 +68,13 @@ import { VelMoreButtonGroup, VelMoreButtonItem } from 'vel-more-button'
 | content | 按钮内容 | <code>string</code> | -
 | disabled | 是否禁用 | <code>boolean</code> | false
 | - | 支持按钮配置其他属性参考 <a href="https://cn.element-plus.org/zh-CN/component/button.html#button-%E5%B1%9E%E6%80%A7" target="_blanck">el-button</a> | - | -
-## VelMoreButtonItem Slots
+
+## VelMoreButtonItem 事件
+| 事件名 | 说明 | 类型
+| - | - | -
+| click | 点击事件，如果绑定的回调函数返回Promise，会自动添加loading效果 | <code>(e: Event) => void \| Promise<void></code>
+
+## VelMoreButtonItem 插槽
 | 插槽名 | 说明 | 子标签
 | - | - | -
 | default | 默认插槽，下拉菜单使用，只能放置VelMoreButtonItem | VelMoreButtonItem
