@@ -1,6 +1,48 @@
 # VelMoreButtonGroup API文档
 
-[英文](./README.md) | **中文**
+一个基于Element Plus开发的，更加易用的按钮组、下拉菜单
+
+[英文](https://github.com/Planck-Ho/vel-more-button/blob/main/README.md) | **中文**
+
+## 安装
+
+```base
+pnpm install vel-more-button
+```
+
+## 使用
+```xml
+<script setup lang="ts">
+import { VelMoreButtonGroup, VelMoreButtonItem } from 'vel-more-button'
+</script>
+
+<template>
+    <!-- 最多显示3个按钮，超过部分变为下拉菜单 -->
+    <VelMoreButtonGroup :max="3">
+        <VelMoreButtonItem content="Default" />
+        <!-- 下拉菜单 -->
+        <VelMoreButtonItem type="primary" content="Primary">
+            <VelMoreButtonItem content="menu1" />
+            <VelMoreButtonItem content="menu2">
+                <VelMoreButtonItem content="menu2-1" />
+                <VelMoreButtonItem content="menu2-2" />
+            </VelMoreButtonItem>
+            <VelMoreButtonItem content="menu3" />
+        </VelMoreButtonItem>
+        <VelMoreButtonItem type="success" content="Success" />
+        <VelMoreButtonItem type="info" content="Info" />
+        <VelMoreButtonItem type="warning" content="Warning" />
+        <VelMoreButtonItem type="danger">
+            <!-- 通过 content 插槽自定义渲染内容 -->
+            <template #content>
+                <span style="color: red;">Danger</span>
+            </template>
+        </VelMoreButtonItem>
+    </VelMoreButtonGroup>
+</template>
+```
+![示例](./src/assets/more-button.gif)
+
 
 ## VelMoreButtonGroup 属性
 

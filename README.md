@@ -1,6 +1,47 @@
 # VelMoreButtonGroup API Documentation
 
-**英文** | [中文](./README.zh-CN.md)
+A more user-friendly button group and dropdown menu developed based on Element Plus
+
+**英文** | [中文](https://github.com/Planck-Ho/vel-more-button/blob/main/README.zh-CN.md)
+
+## Install
+
+```base
+pnpm install vel-more-button
+```
+
+## Usage
+```xml
+<script setup lang="ts">
+import { VelMoreButtonGroup, VelMoreButtonItem } from 'vel-more-button'
+</script>
+
+<template>
+    <!-- Display up to 3 buttons, and any excess will become a dropdown menu -->
+    <VelMoreButtonGroup :max="3">
+        <VelMoreButtonItem content="Default" />
+        <!--  dropdown menu -->
+        <VelMoreButtonItem type="primary" content="Primary">
+            <VelMoreButtonItem content="menu1" />
+            <VelMoreButtonItem content="menu2">
+                <VelMoreButtonItem content="menu2-1" />
+                <VelMoreButtonItem content="menu2-2" />
+            </VelMoreButtonItem>
+            <VelMoreButtonItem content="menu3" />
+        </VelMoreButtonItem>
+        <VelMoreButtonItem type="success" content="Success" />
+        <VelMoreButtonItem type="info" content="Info" />
+        <VelMoreButtonItem type="warning" content="Warning" />
+        <VelMoreButtonItem type="danger">
+            <!-- Customize rendering content through content slots -->
+            <template #content>
+                <span style="color: red;">Danger</span>
+            </template>
+        </VelMoreButtonItem>
+    </VelMoreButtonGroup>
+</template>
+```
+![demo](./src/assets/more-button.gif)
 
 ## VelMoreButtonGroup Properties
 

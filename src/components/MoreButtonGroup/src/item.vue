@@ -3,6 +3,7 @@ import type { VNode } from 'vue'
 import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
 import { guid } from './utils'
 import { useMoreButtonGroupInject } from './hooks'
+import { ElButton } from 'element-plus'
 
 export default defineComponent({
   name: 'VelMoreButtonItem',
@@ -55,7 +56,7 @@ export default defineComponent({
     })
 
     return () => {
-      return <el-button
+      return <ElButton
         size={groupProps.size}
         text={groupProps.text}
         link={groupProps.link}
@@ -65,7 +66,7 @@ export default defineComponent({
       >
         {slots.default?.()}
         {renderContent()}
-      </el-button>
+      </ElButton>
     }
   },
 })

@@ -1,11 +1,14 @@
 <script lang="tsx">
 import { computed, defineComponent, ref, unref } from 'vue'
-import type {  PropType } from 'vue'
+import type { PropType } from 'vue'
 import { Loading } from '@element-plus/icons-vue'
 import type { Item } from './interface'
 import { useMoreButtonGroupInject } from './hooks'
+import { ElCascader, ElIcon } from 'element-plus'
 import MoreButton from './button.vue'
 const VueMoreButton = MoreButton as any
+const VueElCascader = ElCascader as any
+
 export default defineComponent({
   name: 'VelMoreButtonDropdown',
   inheritAttrs: false,
@@ -34,9 +37,9 @@ export default defineComponent({
           return <div class={['more-dropdown-button-item', p.innerLoading ? 'show-loading' : '']} key={data.id} onClick={e => p.onClick(e)}>
             {data.content()}
             {
-               <el-icon class="is-loading">
-              <Loading />
-            </el-icon>}
+              <ElIcon class="is-loading">
+                <Loading />
+              </ElIcon>}
           </div>
         }
         return <div class="more-dropdown-button-item" key={data.id}>{data.content()}</div>
@@ -64,7 +67,7 @@ export default defineComponent({
           modelValue.value = val
         },
       }
-      
+
       return <VueMoreButton class="more-dropdown-reference-button"
         key={props.data.id}
         size={groupProps.size}
@@ -75,7 +78,7 @@ export default defineComponent({
       >
         {props.data.content?.()}
         <div class="more-button-group-dropdown">
-          <el-cascader {...modelProps}
+          <VueElCascader {...modelProps}
             v-slots={cascaderSlots}
             popper-class="more-button-group-dropdown-popper"
             validate-event={false}

@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { VelMoreButtonGroup, VelMoreButtonItem } from './components'
 
-const callback = () => {
-
+const callback = (e: Event) => {
+  console.log('callback', e)
 }
 </script>

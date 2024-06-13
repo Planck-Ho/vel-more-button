@@ -1,8 +1,7 @@
-import type { ButtonProps } from 'element-plus'
 
 export interface VelMoreButtonGroupProps {
   max?: number
-  size?: ButtonProps['size']
+  size?: "" | "default" | "small" | "large"
   text?: boolean
   link?: boolean
   moreText?: string

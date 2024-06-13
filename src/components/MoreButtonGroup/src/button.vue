@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Loading } from '@element-plus/icons-vue'
-
+import { ElButton, ElIcon } from 'element-plus'
 interface Props {
   onClick?: (evt: MouseEvent) => any
   innerLoading?: boolean
@@ -17,9 +17,9 @@ defineOptions({
     <template #default>
       <slot />
       <span v-if="innerLoading" class="loading-icon">
-        <el-icon class="is-loading">
+        <ElIcon class="is-loading">
           <Loading />
-        </el-icon>
+        </ElIcon>
       </span>
     </template>
   </el-button>
