@@ -21,7 +21,7 @@
         - name: Setup node
           uses: actions/setup-node@v3
           with:
-            node-version: 20
+            node-version: 18
             registry-url: https://registry.npmjs.com/
           
         - name: Get pnpm store directory
@@ -54,7 +54,7 @@
 
         - uses: actions/setup-node@v3
           with:
-            node-version: 20
+            node-version: 18
             registry-url: https://registry.npmjs.com/
         - name: Setup pnpm
           uses: pnpm/action-setup@v2
