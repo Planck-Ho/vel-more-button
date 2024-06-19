@@ -8,10 +8,7 @@
     # 测试任务
     test:
       runs-on: ubuntu-latest
-      # 设置变量
-      strategy:
-        matrix:
-          node-version: [20.x]
+
       steps:
           # 检查并切换到 main 分支
         - name: 检查 main 分支
@@ -24,7 +21,7 @@
         - name: Setup node
           uses: actions/setup-node@v3
           with:
-            node-version: ${{ matrix.node-version }}
+            node-version: 20
             registry-url: https://registry.npmjs.com/
           
         - name: Get pnpm store directory
@@ -51,16 +48,13 @@
       permissions:
         contents: read
         id-token: write
-      # 设置变量
-      strategy:
-        matrix:
-          node-version: [20.x]
+ 
       steps:
         - uses: actions/checkout@v3
 
         - uses: actions/setup-node@v3
           with:
-            node-version: ${{ matrix.node-version }}
+            node-version: 20
             registry-url: https://registry.npmjs.com/
         - name: Setup pnpm
           uses: pnpm/action-setup@v2
