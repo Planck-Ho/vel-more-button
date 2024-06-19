@@ -78,3 +78,31 @@ import { VelMoreButtonGroup, VelMoreButtonItem } from 'vel-more-button'
 | - | - | - |
 | default | Default slot for dropdown menus, can only contain VelMoreButtonItem | VelMoreButtonItem
 | content | Button content | -
+
+## FAQ
+### Why use el-cascader for dropdown menus?
+<code>el-dropdown</code> does not support multi-level menus, so use <code>el-cascader</code>
+
+### Restrictions on modifying button styles
+When the `max` attribute value is `0` and is automatically calculated based on the container width, if you need to modify the button size through CSS, using a child element selector like `.group > .el-button` to change the button size will lead to incorrect `max` calculations. Instead, you should use inline styles `style` or descendant selectors like `.group .el-button` for proper modification.
+
+```xml
+<template>
+  <VelMoreButtonGroup class="my-button-group">
+    <!-- Correct, button size can be set via style attribute -->
+    <VelMoreButtonItem content="Button 1" style="width: 100px" />
+    <VelMoreButtonItem content="Button 2" type="success" class="my-button-item-1" />
+    <VelMoreButtonItem content="Button 3" type="info" class="my-button-item-2" />
+  </VelMoreButtonGroup>
+</template>
+<style>
+/* Incorrect, using child element selector causes incorrect max calculation */
+.my-button-group > .my-button-item-1{
+  width: 100px;
+}
+/* Correct, using descendant selector allows correct max calculation */
+.my-button-group .my-button-item-2{
+  width: 100px;
+}
+</style>
+```

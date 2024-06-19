@@ -79,3 +79,32 @@ import { VelMoreButtonGroup, VelMoreButtonItem } from 'vel-more-button'
 | - | - | -
 | default | 默认插槽，下拉菜单使用，只能放置VelMoreButtonItem | VelMoreButtonItem
 | content | 按钮内容 | -
+
+## FAQ
+### 为什么用el-cascader做下拉菜单?
+
+<code>el-dropdown</code>不支持多级菜单，故选用<code>el-cascader</code>
+
+### 修改按钮样式的限制
+<code>max</code>属性值为<code>0</code>根据容器宽度自动计算时，如需通过css修改按钮尺寸，如使用子元素选择器<code>.group > .el-button</code>修改按钮尺寸，会导致<code>max</code>计算错误，只能通过行内样式<code>style</code>和后代选择器<code>.group .el-button</code>修改
+```xml
+<template>
+  <VelMoreButtonGroup class="my-button-group">
+    <!-- 正确，可以通过style属性设置button尺寸 -->
+    <VelMoreButtonItem content="按钮1" style="width: 100px" />
+    <VelMoreButtonItem content="按钮2" type="success" class="my-button-item-1" />
+    <VelMoreButtonItem content="按钮3" type="info" class="my-button-item-2" />
+  </VelMoreButtonGroup>
+</template>
+<style>
+/* 错误，使用子元素选择器，会导致max计算错误 */
+.my-button-group > .my-button-item-1{
+  width: 100px;
+}
+/* 正确，使用后代选择器，可以正确计算max */
+.my-button-group .my-button-item-2{
+  width: 100px;
+}
+</style>
+```
+
