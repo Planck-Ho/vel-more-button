@@ -6,4 +6,4 @@ _2024-06-19_
 
 #### Features
 
-Improve documentation
+add FAQ
