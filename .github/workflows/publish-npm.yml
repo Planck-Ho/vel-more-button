@@ -99,5 +99,5 @@
 
         - name: 刷新缓存
           run: |
-          curl https://purge.jsdelivr.net/npm/vel-more-button@latest/lib/name.json
+            curl https://purge.jsdelivr.net/npm/vel-more-button@latest/lib/name.json
 
