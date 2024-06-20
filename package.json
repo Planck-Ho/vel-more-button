@@ -11,6 +11,10 @@
     "el-button",
     "el-dropdown"
   ],
+  "packageManager": "pnpm@8.14.1",
+  "engines": {
+    "node": ">= 18"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/components/index.d.ts",
