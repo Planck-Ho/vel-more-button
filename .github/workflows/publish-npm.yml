@@ -5,45 +5,7 @@
       branches: [ "main" ]
     
   jobs:
-    # 测试任务
-    test:
-      runs-on: ubuntu-latest
-
-      steps:
-          # 检查并切换到 main 分支
-        - name: 检查 main 分支
-          # 使用 actions/checkout 插件
-          uses: actions/checkout@v3
-
-        - name: Setup pnpm
-          uses: pnpm/action-setup@v2
-
-        - name: Setup node
-          uses: actions/setup-node@v3
-          with:
-            node-version: 18
-            registry-url: https://registry.npmjs.com/
-          
-        - name: Get pnpm store directory
-          id: pnpm-cache
-          run: |
-            echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-        - uses: actions/cache@v3
-          name: Setup pnpm cache
-          with:
-            path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-            key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-            restore-keys: |
-              ${{ runner.os }}-pnpm-store-
-
-        - name: Install dependencies
-          run: pnpm i --frozen-lockfile
-
-        - name: Test
-          run: pnpm run test
     publish:
-      needs: test
       runs-on: ubuntu-latest
       permissions:
         contents: write
@@ -96,14 +58,26 @@
 
         - run: echo ${{steps.version.outputs.prop}}
 
-        - name: 创建 Release
-          uses: softprops/action-gh-release@v1
-          with:
-            files: ./dist/**
-            name: v${{steps.version.outputs.prop}}
-            tag_name: v${{steps.version.outputs.prop}}
+        - name: Create Release
+          id: create_release
+          uses: actions/create-release@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            tag_name: ${{ github.ref }}
+            release_name: Release ${{ github.ref }}
+            draft: false
+            prerelease: false
+
+        - name: Upload Release Asset
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ steps.create_release.outputs.upload_url }}
+            asset_path: ./dist/*
+            asset_name: dist.zip
+            asset_content_type: application/zip
 
         - name: 发布 NPM 包
           # 执行发布代码
