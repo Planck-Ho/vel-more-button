@@ -68,16 +68,18 @@
             release_name: Release ${{ steps.version.outputs.prop }}
             draft: false
             prerelease: false
+        - name: Compress Dist
+          run: zip -r dist.zip dist
 
         - name: Upload Release Asset
           uses: actions/upload-release-asset@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            upload_url: ${{ steps.create_release.outputs.upload_url }}
-            asset_path: ./dist/*
-            asset_name: dist.zip
-            asset_content_type: application/zip
+                upload_url: ${{ steps.create_release.outputs.upload_url }}
+                asset_path: dist.zip
+                asset_name: dist.zip
+                asset_content_type: application/zip
 
         - name: 发布 NPM 包
           # 执行发布代码
