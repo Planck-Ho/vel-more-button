@@ -1,6 +1,6 @@
 {
   "name": "vel-more-button",
-  "version": "0.0.1-rc08",
+  "version": "0.0.1",
   "type": "module",
   "files": [
     "dist"
