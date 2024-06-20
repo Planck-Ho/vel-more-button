@@ -1,9 +1,9 @@
   name: Publish to NPM registry
 
   on:
-    pull_request:
-      branches: [ "main" ]
-    
+    push:
+      branches:
+        - main
   jobs:
     publish:
       runs-on: ubuntu-latest
