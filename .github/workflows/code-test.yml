@@ -10,8 +10,7 @@
       runs-on: ubuntu-latest
 
       steps:
-          # 检查并切换到 main 分支
-        - name: 检查 main 分支
+        - name: 检查 分支
           # 使用 actions/checkout 插件
           uses: actions/checkout@v3
 
