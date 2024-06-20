@@ -1,8 +1,8 @@
   name: Publish to NPM registry
 
   on:
-    push:
-      branches: ["main"]
+    pull_request:
+      branches: [ "main" ]
     
   jobs:
     # 测试任务
@@ -99,7 +99,7 @@
         - name: 创建 Release
           uses: softprops/action-gh-release@v1
           with:
-            files: ./dist/index.js
+            files: ./dist/**
             name: v${{steps.version.outputs.prop}}
             tag_name: v${{steps.version.outputs.prop}}
           env:
