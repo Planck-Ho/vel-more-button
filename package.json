@@ -1,14 +1,15 @@
 {
   "name": "vel-more-button",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "files": [
     "dist"
   ],
   "keywords": [
+    "more-button",
+    "more-dropdown",
     "el-more-button",
-    "element-plus",
-    "el-button",
+    "el-more-dropdown",
     "el-dropdown"
   ],
   "packageManager": "pnpm@8.14.1",
@@ -21,7 +22,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test": "vue-tsc",
+    "test": "vue-tsc --noEmit",
     "preview": "vite preview"
   },
   "homepage": "https://github.com/Planck-Ho/vel-more-button",
@@ -45,8 +46,8 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@element-plus/icons-vue": "^2.3.1",
-    "element-plus": "^2.7.4",
-    "vue": "^3.4.21"
+    "@element-plus/icons-vue": ">2.0.0",
+    "element-plus": ">2.0.0",
+    "vue": ">3.4.0"
   }
 }
