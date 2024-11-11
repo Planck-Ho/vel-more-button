@@ -1,6 +1,6 @@
 <script lang="tsx">
 import type { VNode } from 'vue'
-import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
+import { computed, defineComponent, onBeforeUpdate, onMounted, onUnmounted, ref, shallowRef } from 'vue'
 import { guid } from './utils'
 import { useMoreButtonGroupInject } from './hooks'
 import { ElButton } from 'element-plus'
@@ -26,6 +26,7 @@ export default defineComponent({
     const innerLoading = ref(false)
 
     const onClickHandler = async (e: Event) => {
+      // eslint-disable-next-line @typescript-eslint/no-use-before-define
       if (computedProps.value.innerLoading) return // 取computedProps，考虑外部设置的innerLoading
       innerLoading.value = true
       try {
@@ -36,14 +37,27 @@ export default defineComponent({
       }
     }
 
+    const buttonProps = shallowRef({
+      ...attrs,
+    })
+
     const computedProps = computed(() => {
       return {
         innerLoading: innerLoading.value,
-        ...attrs,
+        ...buttonProps.value,
         onClick: onClickHandler,
         disabled: props.disabled,
       }
     })
+
+    onBeforeUpdate(() => {
+      if (JSON.stringify(buttonProps.value) !== JSON.stringify(attrs)) {
+        buttonProps.value = {
+          ...attrs,
+        }
+      }
+    })
+
     onMounted(() => {
       addItem(itemId, {
         id: itemId,

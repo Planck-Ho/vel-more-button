@@ -1,5 +1,6 @@
 <template>
-  <div style="width: 25vw">
+
+  <div id="resizable">
     <VelMoreButtonGroup>
       <VelMoreButtonItem content="Button1" @click="callback" />
       <VelMoreButtonItem content="Button2" type="primary">
@@ -16,6 +17,7 @@
       <VelMoreButtonItem content="Button6" type="danger" @click="callback"></VelMoreButtonItem>
     </VelMoreButtonGroup>
   </div>
+
 </template>
 
 <script setup lang="ts">
@@ -25,3 +27,14 @@ const callback = (e: Event) => {
   console.log('callback', e)
 }
 </script>
+<style>
+#resizable {
+  padding: 50px;
+  width: 25vw;
+  height: 150px;
+  border: 1px solid black;
+  position: relative;
+  resize: both;
+  overflow: auto;
+}
+</style>
