@@ -68,12 +68,17 @@ export default defineComponent({
         },
       }
 
+      const vueMoreButtonProps = {
+        ...props.data.props,
+        onClick: void 0
+      }
+
       return <VueMoreButton class="more-dropdown-reference-button"
         key={props.data.id}
         size={groupProps.size}
         text={groupProps.text}
         link={groupProps.link}
-        {...props.data.props}
+        {...vueMoreButtonProps}
         onClick={() => togglePopperVisible(true)}
       >
         {props.data.content?.()}

@@ -43,7 +43,7 @@ import { VelMoreButtonGroup, VelMoreButtonItem } from 'vel-more-button'
     </VelMoreButtonGroup>
 </template>
 ```
-![demo](./src/assets/more-button.gif)
+![demo](./src/assets/more-button_compressed.gif)
 
 ## VelMoreButtonGroup Properties
 
